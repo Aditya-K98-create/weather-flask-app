@@ -3,7 +3,7 @@ import requests
 
 app = Flask(__name__)
 
-API_KEY = "75f2a1682081a98824409849dceb5ec8"
+API_KEY = "YOUR_API_KEY"
 
 @app.route("/", methods=["GET", "POST"])
 def index():
@@ -12,7 +12,7 @@ def index():
 
     if request.method == "POST":
         city = request.form["city"]
-        url = f"https://api.openweathermap.org/data/2.5/weather?q={city}&appid=75f2a1682081a98824409849dceb5ec8&units=metric"
+        url = f"https://api.openweathermap.org/data/2.5/weather?q={city}&appid={Your_API_KEY}&units=metric"
         response = requests.get(url)
         data = response.json()
 
