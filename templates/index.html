@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Weather App</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #4facfe, #00f2fe);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+
+        form {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        input {
+            flex: 1;
+            padding: 10px;
+            border-radius: 10px;
+            border: 1px solid #ccc;
+            outline: none;
+            font-size: 14px;
+        }
+
+        button {
+            padding: 10px 15px;
+            border-radius: 10px;
+            border: none;
+            background: #4facfe;
+            color: white;
+            cursor: pointer;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background: #007bff;
+        }
+
+        .weather-info {
+            margin-top: 15px;
+            text-align: left;
+        }
+
+        .weather-info h2 {
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+        .weather-info p {
+            margin: 8px 0;
+            font-size: 15px;
+        }
+
+        .error {
+            color: red;
+            margin-top: 10px;
+        }
+
+        /* 📱 Mobile optimization */
+        @media (max-width: 480px) {
+
+            .card {
+                padding: 20px;
+                border-radius: 15px;
+            }
+
+            form {
+                flex-direction: column;
+            }
+
+            button {
+                width: 100%;
+            }
+
+            h1 {
+                font-size: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="card">
+        <h1>🌦 Weather App</h1>
+
+        <form method="POST">
+            <input type="text" name="city" placeholder="Enter city name" required>
+            <button type="submit">Search</button>
+        </form>
+
+        {% if weather %}
+        <div class="weather-info">
+            <h2>{{ weather.city }}</h2>
+            <p>🌡 Temperature: {{ weather.temperature }} °C</p>
+            <p>💧 Humidity: {{ weather.humidity }} %</p>
+            <p>☁ Condition: {{ weather.description }}</p>
+            <p>🌬 Wind Speed: {{ weather.wind_speed }} m/s</p>
+        </div>
+        {% endif %}
+
+        {% if error %}
+        <div class="error">
+            {{ error }}
+        </div>
+        {% endif %}
+    </div>
+
+</body>
+</html>
