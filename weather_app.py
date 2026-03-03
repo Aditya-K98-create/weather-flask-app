@@ -3,10 +3,10 @@ from colorama import init, Fore
 
 init(autoreset=True)
 
-API_KEY = "75f2a1682081a98824409849dceb5ec8"
+API_KEY = "Your_API_KEY"
 
 def get_weather(city):
-    url = f"https://api.openweathermap.org/data/2.5/weather?q={city}&appid=75f2a1682081a98824409849dceb5ec8&units=metric"
+    url = f"https://api.openweathermap.org/data/2.5/weather?q={city}&appid={Your_API_KEY}&units=metric"
 
     try:
         response = requests.get(url)
